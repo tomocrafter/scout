@@ -104,4 +104,12 @@ trait SearchableTests
             User::search('lar')->take(10)->query($queryCallback)->paginate(5, 'page', 2),
         ];
     }
+
+    protected function itCanUsePaginatedSearchWithEmptyQueryCallback()
+    {
+        $queryCallback = function ($query) {
+        };
+
+        return User::search('*')->query($queryCallback)->paginate();
+    }
 }
