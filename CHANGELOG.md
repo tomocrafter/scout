@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/scout/compare/v10.11.3...10.x)
+## [Unreleased](https://github.com/laravel/scout/compare/v10.11.4...10.x)
+
+## [v10.11.4](https://github.com/laravel/scout/compare/v10.11.3...v10.11.4) - 2024-10-01
+
+* Fix Typesense pagination issue when using query callback by [@tharropoulos](https://github.com/tharropoulos) in https://github.com/laravel/scout/pull/867
+* Update logo to support dark/light theme by [@milewski](https://github.com/milewski) in https://github.com/laravel/scout/pull/869
 
 ## [v10.11.3](https://github.com/laravel/scout/compare/v10.11.2...v10.11.3) - 2024-09-11
 
