@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/scout/compare/v10.11.4...10.x)
+## [Unreleased](https://github.com/laravel/scout/compare/v10.11.5...10.x)
+
+## [v10.11.5](https://github.com/laravel/scout/compare/v10.11.4...v10.11.5) - 2024-10-30
+
+* fix(typesense): properly format boolean filters in Typesense by [@tharropoulos](https://github.com/tharropoulos) in https://github.com/laravel/scout/pull/874
 
 ## [v10.11.4](https://github.com/laravel/scout/compare/v10.11.3...v10.11.4) - 2024-10-01
 
