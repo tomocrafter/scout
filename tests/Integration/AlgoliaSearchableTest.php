@@ -2,13 +2,14 @@
 
 namespace Laravel\Scout\Tests\Integration;
 
-use Illuminate\Support\Env;
 use Laravel\Scout\Tests\Fixtures\User;
+use Orchestra\Testbench\Attributes\RequiresEnv;
 
 /**
  * @group algolia
  * @group external-network
  */
+#[RequiresEnv('ALGOLIA_APP_ID')]
 class AlgoliaSearchableTest extends TestCase
 {
     use SearchableTests;
@@ -21,10 +22,6 @@ class AlgoliaSearchableTest extends TestCase
      */
     protected function defineEnvironment($app)
     {
-        if (is_null(Env::get('ALGOLIA_APP_ID'))) {
-            $this->markTestSkipped();
-        }
-
         $this->defineScoutEnvironment($app);
     }
 

@@ -3,7 +3,6 @@
 namespace Laravel\Scout\Tests\Integration;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Env;
 use Laravel\Scout\Builder;
 use Laravel\Scout\Engines\MeilisearchEngine;
 use Laravel\Scout\Tests\Fixtures\User;
@@ -11,11 +10,13 @@ use Laravel\Scout\Tests\Fixtures\VersionableModel;
 use Meilisearch\Client;
 use Meilisearch\Endpoints\Indexes;
 use Mockery as m;
+use Orchestra\Testbench\Attributes\RequiresEnv;
 
 /**
  * @group meilisearch
  * @group external-network
  */
+#[RequiresEnv('MEILISEARCH_HOST')]
 class MeilisearchSearchableTest extends TestCase
 {
     use SearchableTests {
@@ -30,12 +31,6 @@ class MeilisearchSearchableTest extends TestCase
      */
     protected function defineEnvironment($app)
     {
-        if (is_null(Env::get('MEILISEARCH_HOST'))) {
-            $this->markTestSkipped();
-
-            return;
-        }
-
         $this->defineScoutEnvironment($app);
     }
 
