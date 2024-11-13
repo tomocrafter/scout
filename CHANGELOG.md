@@ -1,6 +1,10 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/scout/compare/v10.11.6...10.x)
+## [Unreleased](https://github.com/laravel/scout/compare/v10.11.7...10.x)
+
+## [v10.11.7](https://github.com/laravel/scout/compare/v10.11.6...v10.11.7) - 2024-11-13
+
+* [10.x] Fix Algolia 3/4 engines by [@dwightwatson](https://github.com/dwightwatson) in https://github.com/laravel/scout/pull/884
 
 ## [v10.11.6](https://github.com/laravel/scout/compare/v10.11.5...v10.11.6) - 2024-11-12
 
