@@ -4,6 +4,7 @@ namespace Laravel\Scout\Engines;
 
 use Algolia\AlgoliaSearch\Config\SearchConfig as Algolia3SearchConfig;
 use Algolia\AlgoliaSearch\SearchClient as Algolia3SearchClient;
+use Illuminate\Support\Arr;
 use Laravel\Scout\Builder;
 use Laravel\Scout\Jobs\RemoveableScoutCollection;
 
@@ -34,24 +35,23 @@ class Algolia3Engine extends AlgoliaEngine
      */
     public static function make(array $config, array $headers, bool $softDelete = false)
     {
-        $config = Algolia3SearchConfig::create([
-            'appId' => $config['id'],
-            'apiKey' => $config['secret'],
-        ])->setDefaultHeaders($headers);
+        $configuration = Algolia3SearchConfig::create(
+            $config['id'], $config['secret'],
+        )->setDefaultHeaders($headers);
 
-        if (is_int($connectTimeout = $config['connect_timeout'])) {
+        if (is_int($connectTimeout = Arr::get($config, 'connect_timeout'))) {
             $configuration->setConnectTimeout($connectTimeout);
         }
 
-        if (is_int($readTimeout = $config['read_timeout'])) {
+        if (is_int($readTimeout = Arr::get($config, 'read_timeout'))) {
             $configuration->setReadTimeout($readTimeout);
         }
 
-        if (is_int($writeTimeout = $config['write_timeout'])) {
+        if (is_int($writeTimeout = Arr::get($config, 'write_timeout'))) {
             $configuration->setWriteTimeout($writeTimeout);
         }
 
-        if (is_int($batchSize = $config['batch_size'])) {
+        if (is_int($batchSize = Arr::get($config, 'batch_size'))) {
             $configuration->setBatchSize($batchSize);
         }
 

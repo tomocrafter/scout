@@ -4,6 +4,7 @@ namespace Laravel\Scout\Engines;
 
 use Algolia\AlgoliaSearch\Api\SearchClient as Algolia4SearchClient;
 use Algolia\AlgoliaSearch\Configuration\SearchConfig as Algolia4SearchConfig;
+use Illuminate\Support\Arr;
 use Laravel\Scout\Builder;
 use Laravel\Scout\Jobs\RemoveableScoutCollection;
 
@@ -38,18 +39,18 @@ class Algolia4Engine extends AlgoliaEngine
             'appId' => $config['id'],
             'apiKey' => $config['secret'],
         ]), array_filter([
-            'batchSize' => $config['batch_size'],
+            'batchSize' => transform(Arr::get($config, 'batch_size'), fn ($batchSize) => is_int($batchSize) ? $batchSize : null),
         ])))->setDefaultHeaders($headers);
 
-        if (is_int($connectTimeout = $config['connect_timeout'])) {
+        if (is_int($connectTimeout = Arr::get($config, 'connect_timeout'))) {
             $configuration->setConnectTimeout($connectTimeout);
         }
 
-        if (is_int($readTimeout = $config['read_timeout'])) {
+        if (is_int($readTimeout = Arr::get($config, 'read_timeout'))) {
             $configuration->setReadTimeout($readTimeout);
         }
 
-        if (is_int($writeTimeout = $config['write_timeout'])) {
+        if (is_int($writeTimeout = Arr::get($config, 'write_timeout'))) {
             $configuration->setWriteTimeout($writeTimeout);
         }
 
