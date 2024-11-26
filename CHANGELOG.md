@@ -1,6 +1,11 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/scout/compare/v10.11.7...10.x)
+## [Unreleased](https://github.com/laravel/scout/compare/v10.11.8...10.x)
+
+## [v10.11.8](https://github.com/laravel/scout/compare/v10.11.7...v10.11.8) - 2024-11-26
+
+* [10.x] Test Improvements by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/scout/pull/880
+* Fix: ambigious queries when adding other tables to the query builder by [@adminfriso](https://github.com/adminfriso) in https://github.com/laravel/scout/pull/887
 
 ## [v10.11.7](https://github.com/laravel/scout/compare/v10.11.6...v10.11.7) - 2024-11-13
 
