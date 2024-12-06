@@ -166,11 +166,23 @@ class DatabaseEngineTest extends TestCase
         $this->assertCount(1, $models);
         $this->assertEquals('Taylor Otwell', $models[0]->name);
 
+        $models = SearchableUser::search('laravel')->orderByDesc('name')->take(1)->get();
+        $this->assertCount(1, $models);
+        $this->assertEquals('Taylor Otwell', $models[0]->name);
+
         $modelsPaginate = SearchableUser::search('laravel')->orderBy('name', 'desc')->paginate(1, 'page', 1);
         $this->assertCount(1, $modelsPaginate);
         $this->assertEquals('Taylor Otwell', $modelsPaginate[0]->name);
 
+        $modelsPaginate = SearchableUser::search('laravel')->orderByDesc('name')->paginate(1, 'page', 1);
+        $this->assertCount(1, $modelsPaginate);
+        $this->assertEquals('Taylor Otwell', $modelsPaginate[0]->name);
+
         $modelsSimplePaginate = SearchableUser::search('laravel')->orderBy('name', 'desc')->simplePaginate(1, 'page', 1);
+        $this->assertCount(1, $modelsSimplePaginate);
+        $this->assertEquals('Taylor Otwell', $modelsSimplePaginate[0]->name);
+
+        $modelsSimplePaginate = SearchableUser::search('laravel')->orderByDesc('name')->simplePaginate(1, 'page', 1);
         $this->assertCount(1, $modelsSimplePaginate);
         $this->assertEquals('Taylor Otwell', $modelsSimplePaginate[0]->name);
     }
