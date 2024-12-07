@@ -144,7 +144,7 @@ class Algolia4Engine extends AlgoliaEngine
      */
     protected function performSearch(Builder $builder, array $options = [])
     {
-        $options = array_merge($builder->options, $options);
+        $options = array_merge_recursive($builder->options, $options);
 
         if ($builder->callback) {
             return call_user_func(
