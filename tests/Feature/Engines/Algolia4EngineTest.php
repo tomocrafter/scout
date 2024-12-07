@@ -146,6 +146,20 @@ class Algolia4EngineTest extends TestCase
         $engine->search($builder);
     }
 
+    public function test_search_sends_correct_parameters_and_keep_soft_delete_flag_to_algolia_in_search()
+    {
+        $engine = $this->app->make(EngineManager::class)->engine();
+
+        $this->client->shouldReceive('searchSingleIndex')->once()->with(
+            'users',
+            ['query' => 'zonda', 'numericFilters' => ['baz=2', '__soft_deleted=0', 'foo=1', '0=1']],
+        );
+
+        $builder = new Builder(new SearchableUser, 'zonda', softDelete: true);
+        $builder->where('foo', 1)->whereIn('bar', [])->options(['numericFilters' => ['baz=2']]);
+        $engine->search($builder);
+    }
+
     public function test_map_correctly_maps_results_to_models()
     {
         $model = SearchableUserFactory::new()->createQuietly(['name' => 'zonda']);
